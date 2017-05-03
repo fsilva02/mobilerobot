@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>nardo_teleop</name>
+  <name>control_msg</name>
   <version>0.0.0</version>
-  <description>The nardo_teleop package</description>
+  <description>The control_msg package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/nardo_teleop</url> -->
+  <!-- <url type="website">http://wiki.ros.org/control_msg</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
@@ -47,9 +47,9 @@
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
   <build_depend>message_generation</build_depend>
+  <run_depend>message_generation</run_depend>
+  <build_depend>message_runtime</build_depend>
   <run_depend>message_runtime</run_depend>
-  <build_depend>control_msg</build_depend>
-  <run_depend>control_msg</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

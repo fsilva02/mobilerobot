@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nardo_teleop)
+project(control_msg)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -8,7 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  control_msg
+  message_generation
+  message_runtime
 )
 
 ## System dependencies are found with CMake's conventions
@@ -45,11 +46,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+ add_message_files(
+   FILES
+   control.msg
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -66,10 +66,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,7 +102,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES nardo_teleop
+#  LIBRARIES control_msg
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -119,28 +119,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(nardo_teleop
-#   src/${PROJECT_NAME}/nardo_teleop.cpp
+# add_library(control_msg
+#   src/${PROJECT_NAME}/control_msg.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(nardo_teleop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-find_package( PkgConfig REQUIRED )
-pkg_check_modules( ncurses++ REQUIRED ncurses++ )
-add_executable(nardo_teleop src/nardo_teleop.cpp )
-target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
+# add_dependencies(control_msg ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(nardo_teleop_node src/nardo_teleop_node.cpp)
+# add_executable(control_msg_node src/control_msg_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(nardo_teleop_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(control_msg_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(nardo_teleop_node
+# target_link_libraries(control_msg_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -159,7 +155,7 @@ target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS nardo_teleop nardo_teleop_node
+# install(TARGETS control_msg control_msg_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -184,7 +180,7 @@ target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_nardo_teleop.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_control_msg.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(nardo_teleop)
+project(gazebo)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  control_msg
-)
+find_package(catkin REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -68,7 +63,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs
+#   std_msgs  # Or other packages containing msgs
 # )
 
 ################################################
@@ -102,8 +97,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES nardo_teleop
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  LIBRARIES gazebo
+#  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
 
@@ -114,33 +109,26 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
 
 ## Declare a C++ library
-# add_library(nardo_teleop
-#   src/${PROJECT_NAME}/nardo_teleop.cpp
+# add_library(gazebo
+#   src/${PROJECT_NAME}/gazebo.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(nardo_teleop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-find_package( PkgConfig REQUIRED )
-pkg_check_modules( ncurses++ REQUIRED ncurses++ )
-add_executable(nardo_teleop src/nardo_teleop.cpp )
-target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
+# add_dependencies(gazebo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(nardo_teleop_node src/nardo_teleop_node.cpp)
+# add_executable(gazebo_node src/gazebo_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(nardo_teleop_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(gazebo_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(nardo_teleop_node
+# target_link_libraries(gazebo_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -159,7 +147,7 @@ target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS nardo_teleop nardo_teleop_node
+# install(TARGETS gazebo gazebo_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -184,7 +172,7 @@ target_link_libraries(nardo_teleop ${catkin_LIBRARIES}  ncurses)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_nardo_teleop.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_gazebo.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
